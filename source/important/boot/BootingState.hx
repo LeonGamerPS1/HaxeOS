@@ -1,21 +1,40 @@
 package important.boot;
 
+import flixel.FlxG;
+import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
+
 import flixel.FlxState;
 import flixel.text.FlxText;
 
 class BootingState extends FlxState
 {
 	public var statusText:FlxText;
+	public var fileCont:Array<String>;
+
+	// var dial:FlxPieDial;
+	var loadedFiles:Bool = false;
 
 	override public function create()
 	{
-		super.create();
+		// dial = new FlxPieDial(FlxG.width * 0.85, 0, 200, FlxColor.WHITE, 36, FlxPieDialShape.CIRCLE, true, 10);
+		// add(dial);
+		loadedFiles = false;
+
+		fileCont = new Array();
+
 		statusText = new FlxText(20, 20, "Loading HaxeOS....");
-		add(statusText);
+
+		
+		FlxG.switchState(new BootScreen());
+		FlxG.sound.cacheAll();
+	
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
 	}
+
+
 }
