@@ -1,15 +1,5 @@
 package important.boot;
 
-import flixel.util.FlxTimer;
-import flixel.FlxG;
-import flixel.ui.FlxButton;
-import flixel.util.FlxColor;
-import flixel.text.FlxText;
-import flixel.tweens.FlxTween;
-import openfl.Assets;
-import flixel.FlxSprite;
-import flixel.FlxState;
-
 class BootScreen extends FlxState
 {
 	var s:FlxSprite;
@@ -18,9 +8,14 @@ class BootScreen extends FlxState
 
 	override public function create():Void
 	{
+		#if (!android)
+		var dump:FlxSprite;
+		dump = new FlxSprite().loadGraphic('assets/images/themes/${ThemeManager.currentTheme}/cursor.png');
+		FlxG.mouse.load(dump.pixels);
+		#end
 		super.create();
 
-		s = new FlxSprite(0, 0).loadGraphic("assets/images/me_dumb_if_loads.png");
+		s = new FlxSprite(0, 0).loadGraphic('assets/images/themes/${ThemeManager.currentTheme}/me_dumb_if_loads.png');
 
 		add(s);
 		e = new FlxText(0, 0, 0, "Starting Haxe OS");
@@ -51,7 +46,7 @@ class BootScreen extends FlxState
 	{
 		super.update(elapsed);
 		loadingCircle.y = s.y + s.height * 1.5;
-		e.alpha = 0;
+		e.visible = false;
 		e.y = loadingCircle.y + loadingCircle.height;
 		// e.angle = s.angle;
 		e.x = loadingCircle.x - e.textField.width * 0.2;
@@ -59,7 +54,11 @@ class BootScreen extends FlxState
 		loadingCircle.offset.x = -15;
 		loadingCircle.offset.y = -15;
 	}
-
+	/**
+	 * Returns an array with numbers, starting from 0.
+	 * @param int The numbers inside of the array.
+	 * @return Array<Int>
+	 */
 	public static function numArray(int:Int):Array<Int>
 	{
 		var returnArray = [];
@@ -68,7 +67,7 @@ class BootScreen extends FlxState
 		{
 			returnArray.push(i);
 		}
-		trace(returnArray);
+
 		return returnArray;
 	}
 }

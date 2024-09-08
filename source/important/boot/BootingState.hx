@@ -1,11 +1,6 @@
 package important.boot;
 
-import flixel.FlxG;
-import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
 
-import flixel.FlxState;
-import flixel.text.FlxText;
 
 class BootingState extends FlxState
 {

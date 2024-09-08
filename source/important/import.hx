@@ -1,3 +1,37 @@
 package important;
 
+import flixel.addons.ui.FlxInputText;
+import flixel.input.actions.FlxActionSet;
+import flixel.util.FlxTimer;
+import flixel.tweens.FlxTween;
+import flixel.input.actions.FlxActionInput.FlxInputDeviceObject;
+import flixel.ui.FlxButton;
+import important.themes.ThemeManager;
+import important.boot.BootScreen;
+import important.boot.BootingState;
+import flixel.util.FlxColor;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.FlxState;
+import openfl.events.Event;
+import important.info.FPS_Mem;
+import important.themes.ThemeManager;
+import openfl.utils.AssetCache;
+import hscript.Parser;
+import hscript.Interp;
+import important.hscript.ScriptManager;
+import flixel.FlxGame;
+import flixel.text.FlxText;
+import important.boot.BootingState;
+import openfl.display.FPS;
+import flixel.FlxBasic;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import openfl.display.Sprite;
+import haxe.Timer;
+import openfl.display.FPS;
+import openfl.system.System;
+import openfl.text.TextField;
+import openfl.text.TextFormat;
+import important.bases.ApplicationBase;
+
 using StringTools;
