@@ -1,5 +1,11 @@
 package important.desktop;
 
+
+
+
+
+
+
 class Desktop extends FlxState
 {
 	var taskBar:FlxSprite;
@@ -8,14 +14,15 @@ class Desktop extends FlxState
 
 	var touchTracker:FlxSprite;
 	var infoText:FlxButton;
-	private var scriptManager:ScriptManager;
 
-	public static var applications:FlxTypedGroup<ApplicationBase>;
+
+
 
 	override function create()
 	{
-		applications = new FlxTypedGroup();
-		add(applications);
+		
+
+        
 		FlxG.camera.flash(FlxColor.BLACK);
 		bg = new FlxSprite(0, 0).loadGraphic('assets/images/themes/${ThemeManager.currentTheme}/background.png');
 
@@ -56,21 +63,17 @@ class Desktop extends FlxState
 		};
 
 		add(inputText);
-		scriptManager = new ScriptManager();
-		// Specify the path to your applications folder
-		var applicationsFolder:String = "applications/calculator/"; // Relative path to the folder
-		scriptManager.loadScriptsFromDirectory(applicationsFolder);
-		scriptManager.execute();
-		for (application in applications)
-		{
-			trace(application.title);
-		}
+	
+
+
+
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 		bg.screenCenter();
+		
 		if (taskBar != null)
 			startButton.setPosition(taskBar.x, taskBar.y);
 		#if android
@@ -106,5 +109,6 @@ class Desktop extends FlxState
 			FlxG.camera.zoom -= 0.05;
 		#end
 		#end
+
 	}
 }

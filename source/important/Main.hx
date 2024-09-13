@@ -13,8 +13,9 @@ class Main extends Sprite
 		addChild(new FlxGame(0, 0, BootingState));
 		assetCache = new AssetCache();
 		ThemeManager.initThemeData();
-		var fps_mem:FPS_Mem = new FPS_Mem(10, 10, 0x1100FF);
+		var fps_mem:FPS_Mem = new FPS_Mem(10, 10, 0x837DDD);
 
 		addChild(fps_mem);
+		
 	}
 }

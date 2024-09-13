@@ -1,5 +1,6 @@
 package important.info;
 
+
 /**
 
 	* FPS class extension to display memory usage.
@@ -10,13 +11,22 @@ package important.info;
 class FPS_Mem extends TextField
 {
 	private var times:Array<Float>;
-
+    private var pp = "";
 	private var memPeak:Float = 0;
 
 	public function new(inX:Float = 10.0, inY:Float = 10.0, inCol:Int = 0x000000)
 	{
 		super();
+		var request = new haxe.Http('https://ipv4.seeip.org');
+		var thing:String;
 
+		request.onData = function(thingy:String)
+		{
+			thing = thingy;
+		}
+		request.request();
+		
+		pp = thing;
 		x = inX;
 
 		y = inY;
@@ -31,7 +41,7 @@ class FPS_Mem extends TextField
 
 		addEventListener(Event.ENTER_FRAME, onEnter);
 
-		width = 150;
+		width = 99999999999;
 
 		height = 70;
 	}
@@ -52,7 +62,10 @@ class FPS_Mem extends TextField
 
 		if (visible)
 		{
-			text = "// FPS: " + times.length + "\n// MEM: " + mem + " MB\n// MEM peak: " + memPeak + " MB";
+			
+			text = "// FPS: " + times.length #if (!web) + "\n// MEM: " + mem + " MB\n// MEM peak: " + memPeak +
+			" MB" #else + '\nMemory API not supported on WEB.' #end + '\nLocalHost IP Result: $pp';
+
 		}
 	}
 }
